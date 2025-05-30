@@ -9,7 +9,7 @@ function App() {
   const [userData, setUserData] = useState({ name: "", age: "", city: "" });
 
   const getAllUsers = async () => {
-    const res = await axios.get("http://localhost:8000/users");
+    const res = await axios.get("https://crud-operation-8w2v.onrender.com");
     setUsers(res.data);
     setFilterusers(res.data);
   };
@@ -31,7 +31,7 @@ function App() {
   const handleDelete = async (id) => {
     const isConfirmed = window.confirm("Are you sure, You wanted to delete the data ?");
     if (isConfirmed) {
-      const res = await axios.delete(`http://localhost:8000/users/${id}`);
+      const res = await axios.delete(`https://crud-operation-8w2v.onrender.com/${id}`);
       setUsers(res.data);
       setFilterusers(res.data);
     }
@@ -55,11 +55,11 @@ function App() {
     try {
       if (userData._id) {
         await axios.patch(
-          `http://localhost:8000/users/${userData._id}`,
+          `https://crud-operation-8w2v.onrender.com/${userData._id}`,
           userData
         );
       } else {
-        await axios.post("http://localhost:8000/users", userData);
+        await axios.post("https://crud-operation-8w2v.onrender.com", userData);
       }
       getAllUsers();
       setIsModalOpen(false);
